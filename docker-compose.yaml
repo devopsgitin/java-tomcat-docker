@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  page1:
+    image: page1
+  page2:
+    image: page2
+  proxy:
+    image: proxy
+    ports:
+      - 80:80
+    depends_on:
+      - page1
+      - page2
