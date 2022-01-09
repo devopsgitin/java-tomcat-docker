@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+  page1:
+    image: page1
+    deploy:
+      replicas: 2
+      placement:
+        constraints:
+          - "node.role==worker"
+  
+  page2:
+    image: page2
+    deploy:
+      replicas: 2
+      placement:
+        constraints:
+          - "node.role==worker"
+  
+  proxy:
+    image: proxy
+    deploy:
+      placement:
+        constraints:
+          - "node.role==manager"
+    ports:
+      - 80:80
+    depends_on:
+      - page1
+      - page2
