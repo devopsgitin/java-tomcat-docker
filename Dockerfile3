@@ -1,0 +1,6 @@
+FROM nginx:alpine
+RUN mkdir -p /var/www/page.com
+RUN mkdir -p /var/www/page.com/image
+COPY *.html /var/www/page.com/
+COPY image/*.png /var/www/page.com/image/
+COPY default.conf /etc/nginx/conf.d
